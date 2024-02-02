@@ -1,8 +1,21 @@
-import React from "react";
-import styles from "./page.module.css";
 import Image from "next/image";
-import { getMeal } from "@/lib/meals";
 import { notFound } from "next/navigation";
+
+import { getMeal } from "@/lib/meals";
+import styles from "./page.module.css";
+
+export const generateMetadata = async ({ params }) => {
+  const meal = getMeal(params.slug);
+
+  if (!meal) {
+    notFound();
+  }
+
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+};
 
 const MealDetailsPage = ({ params }) => {
   const meal = getMeal(params.slug);
