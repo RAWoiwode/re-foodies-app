@@ -17,7 +17,12 @@ const MealDetailsPage = ({ params }) => {
     <>
       <header className={styles.header}>
         <div className={styles.image}>
-          <Image src={meal.image} alt={meal.title} fill sizes="33vw" />
+          <Image
+            src={`https://raw-nextjs-demo.s3.amazonaws.com/${meal.image}`}
+            alt={meal.title}
+            fill
+            sizes="33vw"
+          />
         </div>
         <div className={styles.headerText}>
           <h1>{meal.title}</h1>
